@@ -1,10 +1,16 @@
-import ExpandScoresBtn from './ExpandScoresBtn'
-import NewTag from './NewTag';
-const StudentInfoContainer = ({ setStudentIds, studentIds, students, studentProfiles, setStudentProfiles }) => {
+import ExpandScoresBtn from "./ExpandScoresBtn";
+import NewTag from "./NewTag";
+const StudentInfoContainer = ({
+  setStudentIds,
+  studentIds,
+  students,
+  studentProfiles,
+  setStudentProfiles,
+}) => {
   const grades = students.grades.map((grade) => {
     return parseInt(grade, 10);
   });
-  const ids = students.id
+  const ids = students.id;
   const average = (grade) =>
     grade.reduce((a, b) => a + b) / students.grades.length;
   return (

@@ -34,8 +34,6 @@ const NewTag = ({
         id={ids}
         type="text"
         name={ids}
-        // value={searchByTag}
-        // onChange={(e) => setSearchByTag(e.target.value)}
         onKeyPress={(e) => { handleKeyPress(e, e.target.value) }}
         placeholder="Add a tag"
         className="add-tag-input"

@@ -5,8 +5,6 @@ import StudentInfoContainer from "./Components/StudentInfoContainer";
 function App() {
   const [studentProfiles, setStudentProfiles] = useState([]);
   const [search, setSearch] = useState({ name: "", tag: "" });
-  // const [searchByTag, setSearchByTag] = useState('')
-  // const [tags, setTags] = useState({Tags: []})
   const [studentIds, setStudentIds] = useState([]);
   // Fetches student info on render
   useEffect(() => {
@@ -41,59 +39,57 @@ function App() {
     return (
       <div className="app">
         <div className="all-students-container">
-          {/* <div className="search-container"> */}
-            <div className="search search-sticky">
-              <input
-                type="text"
-                name="name-search"
-                onChange={(e) =>
-                  setSearch({ ...search, name: e.target.value.toLowerCase() })
-                }
-                placeholder="Search by name"
-                className="search-input"
-              />
-            </div>
-            <div className="search search-sticky-tag">
-              <input
-                type="text"
-                name="tag-search"
-                onChange={(e) =>
-                  setSearch({ ...search, tag: e.target.value.toLowerCase() })
-                }
-                placeholder="Search by tag"
-                className="search-input"
-              />
-            </div>
-          {/* </div> */}
-          <div className="student-cards">
+          <div className="search search-sticky">
+            <input
+              type="text"
+              name="name-search"
+              onChange={(e) =>
+                setSearch({ ...search, name: e.target.value.toLowerCase() })
+              }
+              placeholder="Search by name"
+              className="search-input"
+            />
+          </div>
+          <div className="search search-sticky-tag">
+            <input
+              type="text"
+              name="tag-search"
+              onChange={(e) =>
+                setSearch({ ...search, tag: e.target.value.toLowerCase() })
+              }
+              placeholder="Search by tag"
+              className="search-input"
+            />
+          </div>
 
-          {Object.values(studentProfiles).map((students) => {
-            const name = `${students.firstName} ${students.lastName}`;
-            const tags = students.tags.join("");
-            if (
-              search.name !== "" &&
-              search.tag === "" &&
-              name.toLowerCase().includes(search.name)
+          <div className="student-cards">
+            {Object.values(studentProfiles).map((students) => {
+              const name = `${students.firstName} ${students.lastName}`;
+              const tags = students.tags.join("");
+              if (
+                search.name !== "" &&
+                search.tag === "" &&
+                name.toLowerCase().includes(search.name)
               ) {
-              return propImports(students);
-            } else if (
-              search.tag !== "" &&
-              search.name === "" &&
-              tags.includes(search.tag)
+                return propImports(students);
+              } else if (
+                search.tag !== "" &&
+                search.name === "" &&
+                tags.includes(search.tag)
               ) {
-              return propImports(students);
-            } else if (
-              search.name !== "" &&
-              search.tag !== "" &&
-              name.toLowerCase().includes(search.name) &&
-              tags.includes(search.tag)
+                return propImports(students);
+              } else if (
+                search.name !== "" &&
+                search.tag !== "" &&
+                name.toLowerCase().includes(search.name) &&
+                tags.includes(search.tag)
               ) {
-              return propImports(students);
-            } else if (search.name === "" && search.tag === "") {
-              return propImports(students);
-            }
-            return <div key={students.id} />;
-          })}
+                return propImports(students);
+              } else if (search.name === "" && search.tag === "") {
+                return propImports(students);
+              }
+              return <div key={students.id} />;
+            })}
           </div>
         </div>
       </div>
